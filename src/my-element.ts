@@ -13,7 +13,7 @@
  */
 
 import {LitElement, html, customElement, property, css} from 'lit-element';
-
+import {classMap} from 'lit-html/directives/class-map';
 /**
  * An example element.
  *
@@ -29,14 +29,20 @@ function footerTemplate(text: string) {
   return html`<footer>${text}</footer>`;
 }
 
+const mainColor = css`red`;
+
 @customElement('my-element')
 export class MyElement extends LitElement {
   static styles = css`
     :host {
       display: block;
-      border: solid 1px gray;
+      border: solid 10px gray;
       padding: 16px;
       max-width: 800px;
+      background: var(--themeColor); /* defined in index.html */
+    }
+    h1 {
+      color: ${mainColor};
     }
   `;
 
@@ -61,6 +67,9 @@ export class MyElement extends LitElement {
   @property({type: Object})
   prop5 = {headerText: 'Header Title', footerText: 'Footer text'};
 
+  @property({type: Object})
+  classes = {mydiv: true, someclass: true};
+
   render() {
     return html`
       ${headerTemplate(this.prop5.headerText)}
@@ -71,7 +80,7 @@ export class MyElement extends LitElement {
       <button ?disabled="${this.prop3}">button 2</button>
       <input type="text" .value="${this.prop4}" />
       <div><slot></slot></div>
-      <div><slot name="one"></slot></div>
+      <div class=${classMap(this.classes)}><slot name="one"></slot></div>
       ${footerTemplate(this.prop5.footerText)}
     `;
   }

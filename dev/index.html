@@ -6,9 +6,16 @@
     <title>&lt;my-element> Demo</title>
     <script type="module" src="../my-element.js"></script>
     <style>
+      html {
+        --themeColor: #123456;
+      }
+
       p {
-        border: solid 1px blue;
+        border: solid 2px blue;
         padding: 8px;
+      }
+      my-element p {
+        color: green;
       }
     </style>
   </head>

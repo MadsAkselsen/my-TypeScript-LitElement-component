@@ -39,10 +39,14 @@ export class MyElement extends LitElement {
       border: solid 10px gray;
       padding: 16px;
       max-width: 800px;
-      background: var(--themeColor); /* defined in index.html */
+      background: var(
+        --themeColor,
+        yellow
+      ); /* themeColor defined in index.html */
     }
     h1 {
       color: ${mainColor};
+      font-size: var(--themeSize, 3rem);
     }
   `;
 

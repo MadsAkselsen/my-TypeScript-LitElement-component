@@ -8,6 +8,7 @@
     <style>
       html {
         --themeColor: #123456;
+        --themeH1Size: 2rem;
       }
 
       p {
@@ -16,6 +17,11 @@
       }
       my-element p {
         color: green;
+      }
+      my-element {
+        --themeSize: var(
+          --themeH1Size
+        ); /* this is how we inject variables onto component custom variables */
       }
     </style>
   </head>
